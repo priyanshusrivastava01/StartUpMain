@@ -1,8 +1,8 @@
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
 const sendLeadNotificationEmail = async (lead) => {
-  // Check if SMTP is configured
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+  // Check if Resend API Key is configured
+  if (!process.env.RESEND_API_KEY) {
     console.log('----------------------------------------------------');
     console.log(`[Email Notification (SIMULATED)] New lead received!`);
     console.log(`Name: ${lead.fullName}`);
@@ -10,25 +10,22 @@ const sendLeadNotificationEmail = async (lead) => {
     console.log(`Email: ${lead.email}`);
     console.log(`Workspace: ${lead.workspaceType}`);
     console.log(`Message: ${lead.message || 'N/A'}`);
-    console.log('SMTP environment variables (SMTP_HOST, SMTP_USER, SMTP_PASS) are not set. Skipping real email send.');
+    console.log('RESEND_API_KEY is not set. Skipping real email send via Resend.');
     console.log('----------------------------------------------------');
     return;
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const mailOptions = {
-      from: `"Startup Cafe Notifications" <${process.env.SMTP_USER}>`,
-      to: process.env.NOTIFICATION_EMAIL || process.env.SMTP_USER,
+    // Resend free tier/test accounts can only send to the email address used to sign up (or verified emails)
+    // The "from" address for free/test account defaults to onboarding@resend.dev
+    const fromEmail = process.env.FROM_EMAIL || 'onboarding@resend.dev';
+    const toEmail = process.env.NOTIFICATION_EMAIL || 'delivered@resend.dev';
+
+    const { data, error } = await resend.emails.send({
+      from: `Startup Cafe <${fromEmail}>`,
+      to: toEmail,
       subject: `🔥 New Lead Inquiry: ${lead.fullName} (${lead.workspaceType})`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; border: 1px solid #e9e2d8; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
@@ -60,7 +57,7 @@ const sendLeadNotificationEmail = async (lead) => {
               </tr>
               <tr>
                 <td style="padding: 10px; border-bottom: 1px solid #f3f4f6; font-weight: bold;">Message:</td>
-                <td style="padding: 10px; border-bottom: 1px solid #f3f4f6; font-style: italic;">${lead.message || 'No additional message.'}</td>
+                <td style="padding: 10px; border-bottom: 1px solid #f3f4f6; font-style: italic;">${lead.message || 'No message provided.'}</td>
               </tr>
               <tr>
                 <td style="padding: 10px; border-bottom: 1px solid #f3f4f6; font-weight: bold;">Date/Time:</td>
@@ -79,13 +76,15 @@ const sendLeadNotificationEmail = async (lead) => {
           </div>
         </div>
       `,
-    };
+    });
 
-    const info = await transporter.sendMail(mailOptions);
-    console.log(`[Email Sent] Message sent successfully: ${info.messageId}`);
-    return info;
+    if (error) {
+      console.error(`[Resend Error] Failed to send email: ${error.message}`);
+    } else {
+      console.log(`[Resend Email Sent] Message sent successfully. ID: ${data.id}`);
+    }
   } catch (error) {
-    console.error(`[Email Error] Failed to send email: ${error.message}`);
+    console.error(`[Email Service Error] Exception occurred: ${error.message}`);
   }
 };
 
