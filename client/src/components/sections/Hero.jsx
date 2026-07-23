@@ -118,7 +118,7 @@ const Hero = ({ onOpenBooking }) => {
             >
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#A3E635] fill-black stroke-black border-2 border-black rounded-full" />
-                Prime Location
+                Prime Location 
               </span>
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#FFDE4D] fill-black stroke-black border-2 border-black rounded-full" />
