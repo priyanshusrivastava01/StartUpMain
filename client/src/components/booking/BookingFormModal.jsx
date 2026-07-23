@@ -24,6 +24,16 @@ const BookingFormModal = ({ isOpen, onClose, initialWorkspace = 'Dedicated Desk'
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === 'phone') {
+      const cleaned = value.replace(/\D/g, '').slice(0, 10);
+      setFormData((prev) => ({ ...prev, [name]: cleaned }));
+      if (errors[name] && cleaned.length === 10) {
+        setErrors((prev) => ({ ...prev, [name]: '' }));
+      }
+      return;
+    }
+
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
@@ -145,6 +155,7 @@ const BookingFormModal = ({ isOpen, onClose, initialWorkspace = 'Dedicated Desk'
                 <input
                   type="tel"
                   name="phone"
+                  maxLength="10"
                   placeholder="e.g. 9876543210"
                   value={formData.phone}
                   onChange={handleChange}
