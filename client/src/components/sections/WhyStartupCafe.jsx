@@ -7,7 +7,7 @@ import {
   Zap,
   Wifi,
   Coffee,
-  UserCheck,
+  UserCheck, 
   Printer,
   Car,
 } from 'lucide-react';
