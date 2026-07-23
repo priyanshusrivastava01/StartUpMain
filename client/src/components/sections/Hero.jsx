@@ -102,7 +102,7 @@ const Hero = ({ onOpenBooking }) => {
                 👥 500+ Members
               </span>
               <span className="flex items-center gap-1 bg-[#F3E8FF] border border-black px-2 py-0.5 rounded shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
-                🏢 5+ Years
+                🏢 9+ Years
               </span>
               <span className="flex items-center gap-1 bg-[#FEF08A] border border-black px-2 py-0.5 rounded shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
                 🇮🇳 Startup India Recognized
@@ -118,7 +118,7 @@ const Hero = ({ onOpenBooking }) => {
             >
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#A3E635] fill-black stroke-black border-2 border-black rounded-full" />
-                Zero Deposit Hassle
+                Prime Location
               </span>
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#FFDE4D] fill-black stroke-black border-2 border-black rounded-full" />

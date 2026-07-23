@@ -80,7 +80,7 @@ const Location = () => {
             {/* CTAs */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-8 border-t border-[#E9E2D8] mt-6">
               <a
-                href="https://maps.google.com/?q=2nd+Floor,+Opposite+Vijay+Cinema,+Vijay+Chowk,+Gorakhpur"
+                href="https://wa.me/919670111167?text=Hi%20Startup%20Cafe,%20I'd%20like%20to%20get%20the%20exact%20location%20and%20directions%20to%20your%20coworking%20space."
                 target="_blank"
                 rel="noreferrer"
                 className="py-3 px-4 bg-white hover:bg-[#FAF7F2]/30 border border-[#2E5E4E] text-[#2E5E4E] text-sm font-semibold rounded-xl flex items-center justify-center gap-2 transition-all cursor-pointer"

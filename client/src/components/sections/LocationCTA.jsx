@@ -356,7 +356,7 @@ const LocationCTA = ({ selectedPlan }) => {
  
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-4 border-t-2 border-black mt-4">
               <a
-                href="https://maps.google.com/?q=2nd+Floor,+Opposite+Vijay+Cinema,+Vijay+Chowk,+Gorakhpur"
+                href="https://wa.me/919670111167?text=Hi%20Startup%20Cafe,%20I'd%20like%20to%20get%20the%20exact%20location%20and%20directions%20to%20your%20coworking%20space."
                 target="_blank"
                 rel="noreferrer"
                 className="py-2.5 px-3 bg-[#FFDE4D] hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] border-2 border-black text-black text-xs font-black rounded-xl flex items-center justify-center gap-1.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer"
