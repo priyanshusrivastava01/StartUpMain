@@ -5,7 +5,7 @@ const errorHandler = (err, req, res, next) => {
 
   // Mongoose Validation Error
   if (err.name === 'ValidationError') {
-    const formattedErrors = Object.values(err.errors).map((val) => ({
+    const formattedErrors =  Object.values(err.errors).map((val) => ({
       field: val.path,
       message: val.message,
     }));
