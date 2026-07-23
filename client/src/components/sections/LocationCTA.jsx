@@ -237,6 +237,7 @@ const LocationCTA = ({ selectedPlan }) => {
                   <input
                     type="date"
                     name="startDate"
+                    min={new Date().toISOString().split('T')[0]}
                     value={formData.startDate}
                     onChange={handleChange}
                     className="w-full px-3.5 py-2 text-xs bg-white border-2 border-black rounded-xl h-10 focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all font-bold text-black"
