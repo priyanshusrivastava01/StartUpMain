@@ -34,10 +34,11 @@ const Navbar = ({ onOpenBooking }) => {
             href="https://wa.me/919670111167?text=Hi%20Startup%20Cafe,%20I'd%20like%20to%20inquire%20about%20workspace%20availability%20in%20Gorakhpur."
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2.5 text-xs font-extrabold text-black bg-[#A3E635] border-2 border-black rounded-xl shadow-[2.5px_2.5px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[3.5px_3.5px_0px_0px_rgba(0,0,0,1)] active:translate-y-0 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all"
+            className="inline-flex items-center gap-1.5 p-2.5 sm:px-3.5 sm:py-2.5 text-xs font-extrabold text-black bg-[#A3E635] border-2 border-black rounded-xl shadow-[2.5px_2.5px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[3.5px_3.5px_0px_0px_rgba(0,0,0,1)] active:translate-y-0 active:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] transition-all"
+            aria-label="WhatsApp Support"
           >
             <MessageCircle className="w-3.5 h-3.5 text-black fill-black/10" />
-            <span>WhatsApp</span>
+            <span className="hidden sm:inline">WhatsApp</span>
           </a>
 
           <button
