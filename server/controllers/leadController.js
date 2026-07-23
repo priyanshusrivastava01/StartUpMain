@@ -3,7 +3,7 @@ const { successResponse, errorResponse } = require('../utils/apiResponse');
 const { sendLeadNotificationEmail } = require('../utils/email');
 
 /**
- * @desc    Create a new Lead/Inquiry
+ * @desc    Create a new Lead/Inqu iry
  * @route   POST /api/leads
  * @access  Public
  */
