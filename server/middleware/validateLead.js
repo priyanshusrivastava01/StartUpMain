@@ -28,8 +28,8 @@ const validateLeadInput = [
     .trim()
     .notEmpty()
     .withMessage('Workspace type is required')
-    .isIn(['Dedicated Desk', 'Private Cabin'])
-    .withMessage('Workspace type must be either Dedicated Desk or Private Cabin'),
+    .isIn(['Dedicated Desk', 'Private Cabin', 'Day Pass', 'Conference Room'])
+    .withMessage('Workspace type must be Dedicated Desk, Private Cabin, Day Pass, or Conference Room'),
 
   body('message')
     .optional()

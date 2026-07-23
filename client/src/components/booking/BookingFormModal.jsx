@@ -186,6 +186,8 @@ const BookingFormModal = ({ isOpen, onClose, initialWorkspace = 'Dedicated Desk'
               >
                 <option value="Dedicated Desk">Dedicated Desk (₹6,999/month)</option>
                 <option value="Private Cabin">Private Cabin (Starting ₹29,999/month)</option>
+                <option value="Day Pass">Day Pass (₹499/day)</option>
+                <option value="Conference Room">Conference Room (₹999/hour)</option>
               </select>
             </div>
 

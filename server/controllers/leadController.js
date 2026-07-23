@@ -1,5 +1,6 @@
 const Lead = require('../models/Lead');
 const { successResponse, errorResponse } = require('../utils/apiResponse');
+const { sendLeadNotificationEmail } = require('../utils/email');
 
 /**
  * @desc    Create a new Lead/Inquiry
@@ -17,6 +18,9 @@ const createLead = async (req, res, next) => {
       workspaceType,
       message: message || '',
     });
+
+    // Send email notification in the background
+    sendLeadNotificationEmail(lead);
 
     return successResponse(
       res,

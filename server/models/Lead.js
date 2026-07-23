@@ -24,8 +24,8 @@ const leadSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Workspace type is required'],
       enum: {
-        values: ['Dedicated Desk', 'Private Cabin'],
-        message: 'Workspace type must be either Dedicated Desk or Private Cabin',
+        values: ['Dedicated Desk', 'Private Cabin', 'Day Pass', 'Conference Room'],
+        message: 'Workspace type must be Dedicated Desk, Private Cabin, Day Pass, or Conference Room',
       },
     },
     message: {
