@@ -13,7 +13,6 @@ const LocationCTA = ({ selectedPlan }) => {
     duration: 'Monthly',
     startDate: '',
     people: '1',
-    location: '',
     message: '',
   });
 
@@ -85,7 +84,7 @@ const LocationCTA = ({ selectedPlan }) => {
         phone: formData.phone,
         email: formData.email,
         workspaceType: formData.planType,
-        message: `Duration: ${formData.duration} | Start Date: ${formData.startDate} | People: ${formData.people} | Location: ${formData.location} | Note: ${formData.message}`,
+        message: `Duration: ${formData.duration} | Start Date: ${formData.startDate} | People: ${formData.people} | Note: ${formData.message}`,
       };
       const response = await createLeadInquiry(payload);
       addToast(
@@ -100,7 +99,6 @@ const LocationCTA = ({ selectedPlan }) => {
         duration: 'Monthly',
         startDate: '',
         people: '1',
-        location: '',
         message: '',
       });
     } catch (err) {
@@ -260,30 +258,16 @@ const LocationCTA = ({ selectedPlan }) => {
               </div>
 
               {/* Row 4 */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[10px] font-black text-black/60 uppercase tracking-widest mb-1.5">Location</label>
-                  <input
-                    type="text"
-                    name="location"
-                    placeholder="Search for area (Gorakhpur...)"
-                    value={formData.location}
-                    onChange={handleChange}
-                    className="w-full px-3.5 py-2.5 text-xs bg-white border-2 border-black rounded-xl focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all font-bold text-black"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[10px] font-black text-black/60 uppercase tracking-widest mb-1.5">Message (Optional)</label>
-                  <input
-                    type="text"
-                    name="message"
-                    placeholder="Special requirements?"
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-3.5 py-2.5 text-xs bg-white border-2 border-black rounded-xl focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all font-bold text-black"
-                  />
-                </div>
+              <div>
+                <label className="block text-[10px] font-black text-black/60 uppercase tracking-widest mb-1.5">Message (Optional)</label>
+                <input
+                  type="text"
+                  name="message"
+                  placeholder="Special requirements?"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-3.5 py-2.5 text-xs bg-white border-2 border-black rounded-xl focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all font-bold text-black"
+                />
               </div>
 
               {/* Submit Button */}
