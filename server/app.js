@@ -18,6 +18,8 @@ app.use(compression());
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
+  'https://new.startupcafe.co.in',
+  'https://e.startupcafe.co.in',
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
