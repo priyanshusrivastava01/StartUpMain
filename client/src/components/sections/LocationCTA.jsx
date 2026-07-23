@@ -71,12 +71,18 @@ const LocationCTA = ({ selectedPlan }) => {
 
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone is required';
+    } else if (!/^[6-9]\d{9}$/.test(formData.phone.trim())) {
+      newErrors.phone = 'Please enter a valid 10-digit Indian phone number';
     }
 
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email.trim())) {
       newErrors.email = 'Enter a valid email';
+    }
+
+    if (formData.planType === 'Select a Plan') {
+      newErrors.planType = 'Please select a workspace plan';
     }
 
     setErrors(newErrors);
@@ -113,7 +119,7 @@ const LocationCTA = ({ selectedPlan }) => {
       });
     } catch (err) {
       const errorMsg =
-        err.message || (err.errors && err.errors[0]?.message) || 'Failed to submit. Please try again.';
+        (err.errors && err.errors[0]?.message) || err.message || 'Failed to submit. Please try again.';
       addToast(errorMsg, 'error');
     } finally {
       setIsSubmitting(false);
@@ -194,7 +200,9 @@ const LocationCTA = ({ selectedPlan }) => {
                     name="planType"
                     value={formData.planType}
                     onChange={handleChange}
-                    className="w-full px-3.5 py-2.5 text-xs bg-white border-2 border-black rounded-xl focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all font-bold text-black"
+                    className={`w-full px-3.5 py-2.5 text-xs bg-white border-2 border-black rounded-xl focus:outline-none shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all font-bold text-black ${
+                      errors.planType ? 'bg-rose-50 border-rose-500' : ''
+                    }`}
                   >
                     <option value="Select a Plan">Select a Plan</option>
                     {formData.duration === 'Daily' ? (
@@ -210,6 +218,7 @@ const LocationCTA = ({ selectedPlan }) => {
                       </>
                     )}
                   </select>
+                  {errors.planType && <p className="text-[10px] text-rose-500 mt-1 font-bold">{errors.planType}</p>}
                 </div>
               </div>
 

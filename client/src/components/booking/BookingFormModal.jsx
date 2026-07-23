@@ -90,7 +90,7 @@ const BookingFormModal = ({ isOpen, onClose, initialWorkspace = 'Dedicated Desk'
       onClose();
     } catch (err) {
       const errorMsg =
-        err.message || (err.errors && err.errors[0]?.message) || 'Failed to submit inquiry. Please try again.';
+        (err.errors && err.errors[0]?.message) || err.message || 'Failed to submit inquiry. Please try again.';
       addToast(errorMsg, 'error');
     } finally {
       setIsSubmitting(false);
